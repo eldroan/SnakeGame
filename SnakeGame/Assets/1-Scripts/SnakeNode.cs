@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 public class SnakeNode : MonoBehaviour
 {
@@ -29,7 +32,23 @@ public class SnakeNode : MonoBehaviour
             myRigidbody.isKinematic = true;
             _timeToNextTick = tickRate;
             _lookingDirection = Vector3.right;
+            
+            //Hay que spawnear la fruta y colocarla en algún lugar aleatorio del tablero
+            Instantiate(fruitPrefab, this.GenerateRandomFruitPosition(), Quaternion.identity);
         }
+    }
+
+    private Vector3 GenerateRandomFruitPosition()
+    {
+        Vector3 currentHeadPos = this.transform.position;
+        Vector3 fruitPos;
+
+        do
+        {
+            fruitPos = new Vector3(UnityEngine.Random.Range(minX, maxX), 0f, UnityEngine.Random.Range(minZ, maxX));
+        } while (fruitPos.Equals(currentHeadPos));
+
+        return fruitPos;
     }
 
     void Update()

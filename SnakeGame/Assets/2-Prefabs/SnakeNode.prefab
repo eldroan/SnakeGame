@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5461590423453887691}
   - component: {fileID: 3268125939372035926}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: SnakeNode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,7 +87,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6062477317396566942}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -107,8 +107,9 @@ MonoBehaviour:
   tickRate: 1
   movingDistance: 1
   snakeNodePrefab: {fileID: 6062477317396566942}
-  fruitPrefab: {fileID: 0}
-  maxX: 0
-  minX: 0
-  maxZ: 0
-  minZ: 0
+  fruitPrefab: {fileID: 5717002910767199688, guid: 794e69aa9ff343948887074579582623,
+    type: 3}
+  maxX: 5
+  minX: -5
+  maxZ: 5
+  minZ: -5
