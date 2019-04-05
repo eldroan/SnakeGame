@@ -132,6 +132,9 @@ public class SnakeNode : MonoBehaviour
             //Movemos la frutita a una posición diferente
             other.transform.position = GenerateRandomFruitPosition();
             
+            //Aceleramos el juego cada vez que se agarra una fruta
+            tickRate *= 0.9f;
+            
             //Hay que spawnear un nodo extra de la viborita
             Spawn();
         }
