@@ -34,3 +34,15 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+SnakeGame/\.idea/\.idea\.SnakeGame/\.idea/
+
+SnakeGame/Assets/Plugins/Editor/JetBrains/JetBrains\.Rider\.Unity\.Editor\.Plugin\.Repacked\.dll
+
+SnakeGame/\.idea/\.idea\.SnakeGame/riderModule\.iml
+
+SnakeGame/Assets/Plugins/
+
+SnakeGame/Assets/Plugins\.meta
+
+SnakeGame/ProjectSettings/EditorSettings\.asset
