@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
+using UnityEngine.Events;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
@@ -13,6 +15,8 @@ public class SnakeNode : MonoBehaviour
     [SerializeField] private GameObject snakeNodePrefab;
     [SerializeField] private GameObject fruitPrefab;
     [SerializeField] private int maxX,minX,maxZ,minZ;
+    public UnityEvent fruitEaten;
+
     private float _timeToNextTick;
     private static bool _firstNode = true;
 
@@ -126,8 +130,9 @@ public class SnakeNode : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Fruit")
+        if (other.CompareTag("Fruit"))
         {
+            fruitEaten.Invoke();
             
             //Movemos la frutita a una posición diferente
             other.transform.position = GenerateRandomFruitPosition();
