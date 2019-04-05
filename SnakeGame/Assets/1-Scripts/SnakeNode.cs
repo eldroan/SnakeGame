@@ -17,10 +17,10 @@ public class SnakeNode : MonoBehaviour
     private static bool _firstNode = true;
 
     [Header("Valores del nodo")]
-    private bool _isHead;
-    private SnakeNode _next = null;
-    private Vector3 _lookingDirection;
-    private bool shouldSpawn;
+    [SerializeField] private bool _isHead;
+    [SerializeField] private SnakeNode _next = null;
+    [SerializeField] private Vector3 _lookingDirection;
+    [SerializeField] private bool shouldSpawn;
 
     private void Awake()
     {
@@ -28,8 +28,8 @@ public class SnakeNode : MonoBehaviour
         {
             _isHead = true; //Si soy el primer nodo en ser creado me seteo como la cabeza de la viborita
             _firstNode = false;
-            var myRigidbody = this.gameObject.AddComponent<Rigidbody>();
-            myRigidbody.isKinematic = true;
+            var myRigidbody = this.gameObject.AddComponent<Rigidbody>(); //La cabeza registra las colisiones, por esto necesita un rigidbody. Solo objetos que posean un rigidbody reciben mensajes del tipo OnCollisionXXX u OnTriggerXXX
+            myRigidbody.isKinematic = true; //Si un rigidbody es seteado como kinematico entonces no sera afectado por la gravedad y en este curso no se respetan las leyes de la fisica
             _timeToNextTick = tickRate;
             _lookingDirection = Vector3.right;
             
@@ -96,6 +96,45 @@ public class SnakeNode : MonoBehaviour
         if (_next != null)
         {
             _next.Move(previousPosition);
+        }
+        else if(shouldSpawn)
+        {
+            shouldSpawn = false;
+            //Soy el ultimo nodo y me toca spawnear otro nodo en la posición que acabo de abandonar
+            this._next = Instantiate(snakeNodePrefab, previousPosition, Quaternion.identity).GetComponent<SnakeNode>();
+            
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Fruit")
+        {
+            
+            //Movemos la frutita a una posición diferente
+            other.transform.position = GenerateRandomFruitPosition();
+            
+            //Hay que spawnear un nodo extra de la viborita
+            Spawn();
+        }
+        else
+        {
+            //Chocamos contra algo que NO es una fruta, perdimos :c
+            Debug.Log("OUCH!");
+        }
+    }
+
+    private void Spawn()
+    {
+        if (_next != null)
+        {
+            //No soy el ultimo nodo, asi que le paso el mensaje al siguiente
+            _next.Spawn();
+        }
+        else
+        {
+            //Soy el ultimo nodo, cuando me mueva deberia spawnear un nodo mas;
+            shouldSpawn = true;
         }
     }
 }
