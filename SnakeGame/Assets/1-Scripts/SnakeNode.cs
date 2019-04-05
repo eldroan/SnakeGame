@@ -4,6 +4,7 @@ using System.Numerics;
 using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
@@ -146,7 +147,9 @@ public class SnakeNode : MonoBehaviour
         else
         {
             //Chocamos contra algo que NO es una fruta, perdimos :c
-            Debug.Log("OUCH!");
+            Debug.Log(other.name);
+            SceneManager.LoadScene("StartupScene");
+
         }
     }
 
