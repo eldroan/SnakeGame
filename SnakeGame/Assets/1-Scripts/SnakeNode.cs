@@ -91,6 +91,24 @@ public class SnakeNode : MonoBehaviour
     private void Move(Vector3 newPos)
     {
         var previousPosition = this.transform.position;
+
+        if (newPos.x > maxX)
+        {
+            newPos = new Vector3(minX,newPos.y,newPos.z);
+        }
+        else if (newPos.x < minX)
+        {
+            newPos = new Vector3(maxX,newPos.y,newPos.z);
+        }
+        else if (newPos.z > maxZ)
+        {
+            newPos = new Vector3(newPos.x,newPos.y,minZ);
+        }
+        else if (newPos.z < minZ)
+        {
+            newPos = new Vector3(newPos.x,newPos.y,maxZ);
+        }
+        
         this.transform.position = newPos;
 
         if (_next != null)
