@@ -67,18 +67,22 @@ public class SnakeController : MonoBehaviour
             if (vertical == 1 && !_lookingDirection.Equals(Vector3.back))
             {
                 _lookingDirection = Vector3.forward;
+                this.transform.rotation = Quaternion.Euler(0,270,0);
             }
             else if (vertical == -1 && !_lookingDirection.Equals(Vector3.forward))
             {
                 _lookingDirection = Vector3.back;
+                this.transform.rotation = Quaternion.Euler(0,90,0);
             }
             else if (horizontal == 1 && !_lookingDirection.Equals(Vector3.left))
             {
                 _lookingDirection = Vector3.right;
+                this.transform.rotation = Quaternion.identity;
             }
             else if (horizontal == -1 && !_lookingDirection.Equals(Vector3.right))
             {
                 _lookingDirection = Vector3.left;
+                this.transform.rotation = Quaternion.Euler(0,180,0);
             }
 
             Move();
