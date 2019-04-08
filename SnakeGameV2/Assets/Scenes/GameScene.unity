@@ -302,9 +302,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa744eb96ef4b46449b93f8c6c4f9b73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubePrefab: {fileID: 0}
-  snakeMaterial: {fileID: 0}
-  fruitMaterial: {fileID: 0}
+  floorTransform: {fileID: 1261444986}
+  tickRate: 0.5
+  moveDistance: 1
+  fruitEaten:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  cubePrefab: {fileID: 1812402994347969876, guid: 0d3691b2f7982564dbf8dfe68e3170a7,
+    type: 3}
+  snakeMaterial: {fileID: 2100000, guid: 9b2f62b021a57414c8d771f465dc84ff, type: 2}
+  fruitMaterial: {fileID: 2100000, guid: d2144834724f57649895fd9f5fc1eebb, type: 2}
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
