@@ -93,7 +93,7 @@ public class SnakeController : MonoBehaviour
 
     private void Move()
     {
-        Vector3 nextPosition = this.transform.position + _lookingDirection * moveDistance;
+        var nextPosition = this.transform.position + _lookingDirection * moveDistance;
 
         if (nextPosition.x > _floorMagnitudeX)
         {
@@ -134,7 +134,7 @@ public class SnakeController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Fruit"))
+        if (other.CompareTag("Fru)it"))
         {
             _shouldSpawn = true; //Hay que spawnear un nuevo cubo
             
