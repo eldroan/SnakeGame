@@ -4,6 +4,7 @@ using System.Linq.Expressions;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(BoxCollider))]
@@ -147,6 +148,7 @@ public class SnakeController : MonoBehaviour
         else
         {
             //Chocamos con otra cosa y perdimos :c
+            SceneManager.LoadScene("TitleScene");
         }
     }
 
