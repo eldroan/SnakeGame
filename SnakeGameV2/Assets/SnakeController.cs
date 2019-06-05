@@ -134,7 +134,7 @@ public class SnakeController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Fru)it"))
+        if (other.CompareTag("Fruit"))
         {
             _shouldSpawn = true; //Hay que spawnear un nuevo cubo
             
